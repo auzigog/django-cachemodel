@@ -39,15 +39,15 @@ class CacheModel(models.Model):
         super(CacheModel, self).save(*args, **kwargs)
 
         # trigger cache publish
-        self.publish()
+        self.publish_all()
 
     # def delete(self, *args, **kwargs):
     #     super(CacheModel, self).delete(*args, **kwargs)
     #     # trigger publish if we are deleted.
-    #     self.publish()
+    #     self.publish_all()
 
 
-    def publish(self):
+    def publish_all(self):
         # cache ourselves so that we're ready for .cached.get(pk=)
         self.publish_by('pk')
 
